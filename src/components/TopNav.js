@@ -12,6 +12,7 @@ import {
 } from '@bootstrap-styled/v4';
 import { Link, NavLink as RouterLink } from "react-router-dom";
 import Button from '@bootstrap-styled/v4/lib/Button';
+import { FaBeer } from 'react-icons/fa';
 
 export default function TopNav(props) {
   const [isOpen, setOpen] = useState(false);
@@ -20,7 +21,7 @@ export default function TopNav(props) {
     <Navbar sticky="top" color="faded">
     <Nav>
       <NavItem>
-        <NavLink active href="/">Active</NavLink>
+        <NavLink active href="/"><FaBeer />Active</NavLink>
       </NavItem>
       <NavItem>
         <NavLink href="/discard" cssModule="Active">Active</NavLink>
