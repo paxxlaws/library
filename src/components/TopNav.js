@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { 
+  H3,
   Nav,
   Navbar,
   NavItem,
@@ -12,7 +13,7 @@ import {
 } from '@bootstrap-styled/v4';
 import { Link, NavLink as RouterLink } from "react-router-dom";
 import Button from '@bootstrap-styled/v4/lib/Button';
-import { FaBeer } from 'react-icons/fa';
+import { FaChevronLeft } from 'react-icons/fa';
 
 export default function TopNav(props) {
   const [isOpen, setOpen] = useState(false);
@@ -20,36 +21,30 @@ export default function TopNav(props) {
   return (
     <Navbar sticky="top" color="faded">
     <Nav>
-      <NavItem>
-        <NavLink active href="/"><FaBeer />Active</NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink href="/discard" cssModule="Active">Active</NavLink>
-      </NavItem>
+      <NavItem><NavLink active><Link to="/"><FaChevronLeft size="1.5em" /></Link></NavLink></NavItem>
+      <NavItem><Link to="/discard"> <NavLink><H3>Scythe</H3></NavLink></Link></NavItem>
       <NavDropdown isOpen={isOpen} toggle={() => setOpen(!isOpen)}>
         <DropdownToggle caret nav>
-          Dropdown
+          Navigation
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem header>Header</DropdownItem>
-          <DropdownItem disabled>Action</DropdownItem>
-          <DropdownItem>Another Action</DropdownItem>
+          <DropdownItem header><Link to="/">Home</Link></DropdownItem>
+          <DropdownItem ><Link to="/">Setup</Link></DropdownItem>
+          <DropdownItem ><Link to="/">Objective</Link></DropdownItem>
+          <DropdownItem ><Link to="/">Gameplay</Link></DropdownItem>
           <DropdownItem divider />
-          <DropdownItem>Another Action</DropdownItem>
+          <DropdownItem ><Link to="/">Appendix</Link></DropdownItem>
+          <DropdownItem ><Link to="/">Resources</Link></DropdownItem>
         </DropdownMenu>
       </NavDropdown>
-      <NavItem>
-        <NavLink>Link</NavLink>
-      </NavItem>
-      <NavItem>
-        <RouterLink to="/discard">Link</RouterLink>
-      </NavItem>
-      <NavItem>
-        <NavLink><Link to="/discard">Link</Link></NavLink>
-      </NavItem>
-      <NavItem>
-        <Link to="/discard"><NavLink>Link</NavLink></Link>
-      </NavItem>
+      <NavDropdown>
+        <DropdownToggle caret nav>
+          Bookmarks
+        </DropdownToggle>
+        <DropdownMenu>
+        </DropdownMenu>
+      </NavDropdown>
+      <NavItem><Link to="/discard"> <NavLink>Placeholder</NavLink></Link></NavItem>
     </Nav>
     </Navbar>
   );
