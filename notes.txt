@@ -1,0 +1,9 @@
+<Switch>
+      <Route exact path={`/`} render={ (props) => <Home {...props} games={games}/>} />
+      <Route exact path={`/game/:name`} render={ (props) => <Landing {...props} findGame={findGame}/>} />
+    </Switch>
+
+
+        <Home games={games} findGame={findGame}/>
+
+      <Route exact path={`/game/:name`} render={ (props) => <Landing {...props} findGame={props.findGame}/>} />

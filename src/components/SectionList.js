@@ -11,15 +11,15 @@ import { Route } from "react-router-dom";
 export default function SectionList(props) {
   //const { match } = props.match // coming from React Router.
 
-  var match = props.match;
+  //var match = props.match;
 
   return (
   <div><ListGroup>
-    <RouterLink to="/game/scythe/setup"><ListGroupItem>Setup</ListGroupItem></RouterLink>
+    <RouterLink to={`${props.match.url}/setup`}><ListGroupItem>Setup</ListGroupItem></RouterLink>
     <RouterLink to={`${props.match.url}/objective`}><ListGroupItem>Objective</ListGroupItem></RouterLink>
-    <RouterLink to="/setup"><ListGroupItem>Gameplay</ListGroupItem></RouterLink>
-    <RouterLink to="{`/game/${props.name}/Appendix`}"><ListGroupItem>Appendix</ListGroupItem></RouterLink>
-    <RouterLink to={`/game/resources`}><ListGroupItem>Resources</ListGroupItem></RouterLink>
+    <RouterLink to={`${props.match.url}/gameplay`}><ListGroupItem>Gameplay</ListGroupItem></RouterLink>
+    <RouterLink to={`${props.match.url}/appendix`}><ListGroupItem>Appendix</ListGroupItem></RouterLink>
+    <RouterLink to={`${props.match.url}/resources`}><ListGroupItem>Resources</ListGroupItem></RouterLink>
   </ListGroup>
   </div>
   );

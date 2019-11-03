@@ -22,7 +22,7 @@ export default function TopNav(props) {
     <Navbar sticky="top" color="faded">
     <Nav>
       <NavItem><NavLink active><Link to="/"><FaChevronLeft size="1.5em" /></Link></NavLink></NavItem>
-      <NavItem><Link to="/discard"> <NavLink><H3>Scythe</H3></NavLink></Link></NavItem>
+      <NavItem><Link to="/game/scythe"> <NavLink><H3>{props.title}</H3></NavLink></Link></NavItem>
       <NavDropdown isOpen={isOpen} toggle={() => setOpen(!isOpen)}>
         <DropdownToggle caret nav>
           Navigation
