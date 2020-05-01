@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import BootstrapProvider from "@bootstrap-styled/provider";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
+
+const rootElement = document.getElementById("root");
 
 const lightTheme = {
   "$btn-primary-bg": "#333333",
@@ -22,12 +23,12 @@ const darkTheme = {
 };
 
 ReactDOM.render(
-  <BootstrapProvider theme={lightTheme}>
+  <React.StrictMode>
     <Router>
-      <App />
+      <App lightTheme={lightTheme} darkTheme={darkTheme} />
     </Router>
-  </BootstrapProvider>,
-  document.getElementById("root")
+  </React.StrictMode>,
+  rootElement
 );
 
 // If you want your app to work offline and load faster, you can change

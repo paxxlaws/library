@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Jumbotron, H1, P } from "@bootstrap-styled/v4";
+import styled from "styled-components";
 import Game from "../components/Game.js";
-import { games } from "../helpers/games.js";
+import Banner from "../components/Banner.js";
+import { games } from "../data/games.js";
 
-export default function Home() {
+export default function Home(props) {
   const gameList = () => {
     var list = [];
 
@@ -14,7 +15,7 @@ export default function Home() {
           title={games[key].name}
           year={games[key].year}
           desc={games[key].desc}
-          url={games[key].url}
+          vanity={games[key].vanity}
         />
       );
     }
@@ -23,10 +24,7 @@ export default function Home() {
 
   return (
     <React.Fragment>
-      <Jumbotron>
-        <H1 className="display-3">Welcome!</H1>
-        <P lead>This is a description</P>
-      </Jumbotron>
+      <Banner changeTheme={props.changeTheme} />
       {gameList()}
     </React.Fragment>
   );

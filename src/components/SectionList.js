@@ -1,34 +1,33 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { ListGroup, ListGroupItem } from "@bootstrap-styled/v4";
-import { Link, NavLink as RouterLink } from "react-router-dom";
+import { Link, NavLink as RouterLink, useRouteMatch } from "react-router-dom";
+import { NavHashLink as NavLink } from "react-router-hash-link";
 import AccordionNav from "../components/AccordionNav.js";
 import { Route } from "react-router-dom";
 
 export default function SectionList(props) {
-  //const { match } = props.match // coming from React Router.
-
-  //var match = props.match;
+  let { path, url } = useRouteMatch();
 
   return (
-    <div>
+    <React.Fragment>
       <ListGroup>
-        <RouterLink to={`${props.match.url}/setup`}>
+        <RouterLink to={`${url}/setup`}>
           <ListGroupItem>Setup</ListGroupItem>
         </RouterLink>
-        <RouterLink to={`${props.match.url}/objective`}>
+        <NavLink to={`${url}#objective`}>
           <ListGroupItem>Objective</ListGroupItem>
-        </RouterLink>
-        <RouterLink to={`${props.match.url}/gameplay`}>
+        </NavLink>
+        <RouterLink to={`${url}/gameplay`}>
           <ListGroupItem>Gameplay</ListGroupItem>
         </RouterLink>
-        <RouterLink to={`${props.match.url}/appendix`}>
+        <RouterLink to={`${url}/appendix`}>
           <ListGroupItem>Appendix</ListGroupItem>
         </RouterLink>
-        <RouterLink to={`${props.match.url}/resources`}>
+        <RouterLink to={`${url}/resources`}>
           <ListGroupItem>Resources</ListGroupItem>
         </RouterLink>
       </ListGroup>
-    </div>
+    </React.Fragment>
   );
 }

@@ -14,11 +14,13 @@ import {
   P,
   Strong
 } from "@bootstrap-styled/v4";
+import { Link, useRouteMatch } from "react-router-dom";
 import TopNav from "../components/TopNav.js";
 import Carousel from "../components/Carousel.js";
 
 export default function AccordionNav(props) {
-  const [activeAccordionName, setActive] = useState("Accordion1");
+  let { path, url } = useRouteMatch();
+  const [activeAccordionName, setActive] = useState(props.view);
 
   const setup =
     "\n\n1. Shuffle the Point cards (orange back) to form a deck, then draw 5 cards and place them face up in a row to the left of that deck. \n\n2. Place a pile of gold tokens equal to the number of players x2 above the first (leftmost) point card. Then place a pile of silver tokens equal to the number of players x2 above the second Point card ";
@@ -37,13 +39,19 @@ export default function AccordionNav(props) {
         activeAccordionName={activeAccordionName}
         onChange={activeAccordionName => checkActive(activeAccordionName)}
       >
-        <Accordion heading="Setup" name="Accordion1">
+        <Accordion
+          heading={<Link to={`${url}/setup`}>Setup</Link>}
+          name={"Accordion1"}
+        >
           <CardBlock>
             <ReactMarkdown source={setup} />
           </CardBlock>
           <Carousel setup={setup} />
         </Accordion>
-        <Accordion heading={<A>Objective</A>} name="Accordion2">
+        <Accordion
+          heading={<Link to={`${url}/objective`}>Objective</Link>}
+          name="Accordion2"
+        >
           <CardBlock>
             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
             terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
